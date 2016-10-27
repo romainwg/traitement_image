@@ -1,5 +1,4 @@
-
-lecture_bmp: lecture_bmp.o
+main: main.o input_output.o
 	gcc -o $@ $^
 %.o: %.c
 	gcc -c $<
