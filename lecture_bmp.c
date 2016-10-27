@@ -119,6 +119,59 @@ int main(){
 	printf("\n%d___nombre d'index de couleur imptte (0= tte imptte)", nombreIndexCouleur);
 
 	/*FIN ENTÊTE*/
+	
+	fseek(fichierBMP, 1024, SEEK_CUR);
+	/*fseek(fichierBMP, 262140, SEEK_CUR);
+	*/
+	
+	printf("\ntaille h : %d ; taille l : %d", hauteurBMP, largeurBMP);
+
+	int b = 0;
+
+	int ** ligne = NULL;
+	ligne = malloc(sizeof(int*)*hauteurBMP);
+	
+	for(a=0;a<hauteurBMP;a++)
+	{
+		ligne[a] = malloc(sizeof(int)*largeurBMP);
+	}
+
+	for(a=hauteurBMP-1;a>=0;a--)
+	{
+		for(b=0;b<largeurBMP;b++)
+		{
+			(ligne[a])[b] = fgetc(fichierBMP);
+			if((ligne[a])[b] == -1)
+			{
+				printf("erreur lecture fichier image");
+				return 0;
+			}
+		}
+	}
+	
+	/*printf("\n\n%d_%d_%d", ligne[511][0], ligne[511][1], ligne[511][2]);
+	*/
+
+	/*for(a=0;a<5;a++)
+	*/
+	/*do
+	{
+		character = fgetc(fichierBMP);
+		printf("\n_________%d", character);
+	
+	}
+	while(character!=-1);
+	*/
+
+	
+	FILE* fichierOut = NULL;
+
+	ficherOut = fopen("outputTest.bmp","wb");
+
+	
+
+
+	
 
 
 	printf("\n");
